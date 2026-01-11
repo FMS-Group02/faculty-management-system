@@ -1,63 +1,21 @@
-package com.faculty.view.components;
+package com.faculty.controller;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.geom.Area;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.RoundRectangle2D;
+import com.faculty.dao.CourseDAO;
+import com.faculty.dao.CourseDAOImpl;
+import com.faculty.model.Course;
 
-public class DangerButton extends ModernButton {
-    private final Color baseColor = new Color(220, 50, 50);
-    private final Color hoverColor = new Color(240, 70, 70);
-    private final Color clickColor = new Color(180, 35, 35);
-    private float alpha = 0.0f;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Optional;
 
-    public DangerButton(String text) {
-        super(text);
-        setContentAreaFilled(false);
-        setFocusPainted(false);
-        setBorderPainted(false);
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
-        setForeground(Color.WHITE);
-        setFont(new Font("Segoe UI", Font.BOLD, 14));
-    }
+public class CourseController {
+    private final CourseDAO dao = new CourseDAOImpl();
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        int width = getWidth();
-        int height = getHeight();
-
-        Color currentBackground;
-        if (getModel().isPressed()) {
-            currentBackground = clickColor;
-        } else if (getModel().isRollover()) {
-            currentBackground = hoverColor;
-        } else {
-            currentBackground = baseColor;
-        }
-
-        g2.setColor(currentBackground);
-        g2.fill(new RoundRectangle2D.Double(0, 0, width, height, 15, 15));
-
-        if (getModel().isRollover()) {
-            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
-            g2.setColor(Color.WHITE);
-            g2.fill(new RoundRectangle2D.Double(0, 0, width, height / 2.0, 15, 15));
-        }
-
-        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-        g2.setColor(new Color(0, 0, 0, 50));
-        g2.draw(new RoundRectangle2D.Double(0, 0, width - 1, height - 1, 15, 15));
-
-        FontMetrics metrics = g2.getFontMetrics(getFont());
-        int x = (width - metrics.stringWidth(getText())) / 2;
-        int y = ((height - metrics.getHeight()) / 2) + metrics.getAscent();
-
-        g2.setColor(getForeground());
-        g2.drawString(getText(), x, y);
-        g2.dispose();
-    }
+    public List<Course> listAll() throws SQLException { return dao.findAll(); }
+    public Optional<Course> findByCode(int courseCode) throws SQLException { return dao.findById(courseCode); }
+    public List<Course> listByLecturerId(int lecturerId) throws SQLException { return dao.findByLecturerId(lecturerId); }
+    public List<Course> listByDegreeId(int degreeId) throws SQLException { return dao.findByDegreeId(degreeId); }
+    public int create(Course c) throws SQLException { return dao.create(c); }
+    public boolean update(Course c) throws SQLException { return dao.update(c); }
+    public boolean delete(int courseCode) throws SQLException { return dao.delete(courseCode); }
 }
