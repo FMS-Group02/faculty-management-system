@@ -80,7 +80,6 @@ public class UsersPanel extends BaseCrudPanel {
         }
     }
 
-    // ===== Form Dialog =====
     private static class UserForm {
         private final StyledTextField username = new StyledTextField();
         private final StyledPasswordField password = new StyledPasswordField();
