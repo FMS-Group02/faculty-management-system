@@ -6,6 +6,7 @@ INSERT INTO departments(name) VALUES
 ('Engineering Technology'),
 ('Information Systems');
 
+
 -- DEGREES
 INSERT INTO degrees(degree_name, dept_id, duration_years) VALUES
 ('BSc in Computer Science', 1, 4),
