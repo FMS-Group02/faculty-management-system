@@ -76,7 +76,6 @@ CREATE TABLE students (
 );
 
 -- COURSES
--- NOTE: ERD shows course_code as int. Here we keep it as INT PK.
 CREATE TABLE courses (
   course_code INT PRIMARY KEY,
   course_name VARCHAR(150) NOT NULL,
