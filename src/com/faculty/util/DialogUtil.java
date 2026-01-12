@@ -16,5 +16,4 @@ public final class DialogUtil {
     public static boolean confirm(java.awt.Component parent, String message) {
         return JOptionPane.showConfirmDialog(parent, message, "Confirm", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION;
     }
-
 }
