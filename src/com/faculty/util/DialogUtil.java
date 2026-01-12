@@ -9,5 +9,8 @@ public final class DialogUtil {
         JOptionPane.showMessageDialog(parent, message, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    public static void error(java.awt.Component parent, String message) {
+        JOptionPane.showMessageDialog(parent, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
 
 }
