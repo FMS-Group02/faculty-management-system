@@ -94,8 +94,6 @@ public abstract class DashboardFrame extends JFrame {
         initializeNav();
     }
 
-    // ... Rest of the existing methods (createSidebar, createTopHeader, etc.) ...
-    // Note: Use existing implementations for createSidebar and createTopHeader
 
     protected abstract void buildPages();
 

@@ -4,16 +4,9 @@ import com.faculty.model.Session;
 import com.faculty.view.panels.*;
 import javax.swing.*;
 
-/**
- * Admin implementation of the Dashboard.
- * Inherits the geometric layout and navigation logic from DashboardFrame.
- */
 public class AdminDashboardView extends DashboardFrame {
 
-    /**
-     * Constructor for AdminDashboardView.
-     * @param session The current user session containing username and role.
-     */
+
     public AdminDashboardView(Session session) {
         // FIXED: Passes the session and the window title to the parent DashboardFrame constructor.
         // This resolves the "constructor cannot be applied to given types" error.
